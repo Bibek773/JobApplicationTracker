@@ -1,18 +1,12 @@
-import { useEffect } from "react";
-import { getApplications } from "./services/applicationService";
+import ApplicationForm from "./components/ApplicationForm";
 
-function App() {
-    useEffect(() => {
-        getApplications()
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }, []);
-
-    return <h1>Job Application Tracker</h1>;
-}
+const App = () => {
+  return (
+    <div>
+      <h1>Job Application Tracker</h1>
+      <ApplicationForm />
+    </div>
+  );
+};
 
 export default App;
