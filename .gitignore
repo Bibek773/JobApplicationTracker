@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment files (never commit real .env)
+.env
+**/.env
+
+# Build output
+client/dist/
+client/build/
+
+# Test coverage
+coverage/
+**/coverage/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Keep these tracked
+!.env.example
+!**/.env.example
+!postman/
+!screenshots/.gitkeep

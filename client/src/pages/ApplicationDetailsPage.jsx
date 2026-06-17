@@ -1,0 +1,1 @@
+// ApplicationDetailsPage - to be implemented
