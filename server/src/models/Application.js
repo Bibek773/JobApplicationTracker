@@ -1,5 +1,5 @@
 import {Schema, model} from 'mongoose';
-let Application = Schema({
+let applicationSchema = Schema({
     companyName: {
         type : String,
         required :[true, "Company name is required"],
@@ -18,8 +18,8 @@ let Application = Schema({
 
     status: {
         type : String,
-        enum : ["Applied", "Interviewing", "offer", "rejected"],
-        required : true
+        enum : ["Applied", "Interviewing", "Offer", "Rejected"],
+        required : [true, "Status is required"]
     },
     appliedDate: {
         type : Date,
@@ -27,17 +27,13 @@ let Application = Schema({
     },
     notes: {
         type : String,
+        trim: true, 
+        default: "",
     },
-    createdAt: {
-        type : Date,
-        default : Date.now
-    },
-    updatedAt: {
-        type : Date,
-        default : Date.now
-    }
+},
+{ 
+        timestamps: true
+    })
 
-})
-
-let Job= model("job", Application)
-export default Job
+const Job = model("Job", applicationSchema);
+export default Job;

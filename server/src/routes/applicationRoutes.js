@@ -2,23 +2,21 @@
 import { Router } from "express";
 import Job from "../models/Application.js";
 
-
 const applicationRoutes = Router();
+
 applicationRoutes
 .route("/")
 .post(async (req, res, next)=> {
     try{
         let result = await Job.create(req.body);
-
-        res.json({
+        res.status(201).json({
             success: true,
-            message: "Successfull",
+            message: "Application created successfully",
             result: result
         })
     }
-    catch(error){   
-        
-        res.json({
+    catch(error){
+        res.status(400).json({
             success: false,
             error: error.message
         })
@@ -27,38 +25,33 @@ applicationRoutes
 .get(async (req, res, next)=> {
     try{
         let result = await Job.find({});
-
-        res.json({
+        res.status(200).json({
             success: true,
             message: "Retrived",
             result: result
         })
     }
-    catch(error){   
-        
-        res.json({
+    catch(error){
+        res.status(500).json({
             success: false,
             error: error.message
         })
     }
 })
 
-
 applicationRoutes
 .route("/:id")
 .get(async (req, res, next)=> {
     try{
         let result = await Job.findById(req.params.id);
-
-        res.json({
+        res.status(200).json({
             success: true,
             message: "Success",
             result: result
         })
     }
-    catch(error){   
-        
-        res.json({
+    catch(error){
+        res.status(400).json({
             success: false,
             error: error.message
         })
@@ -66,17 +59,15 @@ applicationRoutes
 })
 .patch(async (req, res, next)=> {
     try{
-        let result = await Job.findByIdAndUpdate(req.params.id, req.body, { new: true });
-
-        res.json({
+        let result = await Job.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        res.status(200).json({
             success: true,
             message: "successsss",
             result: result
         })
     }
-    catch(error){   
-        
-        res.json({
+    catch(error){
+        res.status(400).json({
             success: false,
             error: error.message
         })
@@ -85,20 +76,18 @@ applicationRoutes
 .delete(async (req, res, next)=> {
     try{
         let result = await Job.findByIdAndDelete(req.params.id);
-
-        res.json({
+        res.status(200).json({
             success: true,
             message: "sucessfully del vayo",
             result: result
         })
     }
-    catch(error){   
-        
-        res.json({
+    catch(error){
+        res.status(400).json({
             success: false,
             error: error.message
         })
     }
 })
 
-export default applicationRoutes
+export default applicationRoutes;
