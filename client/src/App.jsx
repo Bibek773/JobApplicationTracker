@@ -3,6 +3,7 @@ import { getApplications, deleteApplication } from "./services/applicationServic
 import ApplicationForm from "./components/ApplicationForm";
 
 const App = () => {
+  const [editingApplication, setEditingApplication] = useState(null);
   const [applications, setApplications] = useState([]);
   useEffect(() => {
   const loadApplications = async () => {
@@ -33,17 +34,28 @@ const handleDelete = async (id) => {
     console.error("Failed to delete application:", error);
   }
 };
+
   return (
     <div>
       <h1>Job Application Tracker</h1>
 
       <ApplicationForm
+        editingApplication={editingApplication}
         onApplicationCreated={(newApplication) => {
           setApplications((previousApplications) => [
             ...previousApplications,
             newApplication
           ]);
-        }}/>
+        }}
+         onApplicationUpdated={(updatedApplication) => {
+            setApplications(
+            applications.map((application) =>
+            application._id === updatedApplication._id
+              ? updatedApplication
+              : application));
+
+    setEditingApplication(null);
+  }}/>
 
       <h2>Applications</h2>
 
@@ -56,6 +68,7 @@ const handleDelete = async (id) => {
             <p>Job Type: {application.jobType}</p>
             <hr/>
             <button onClick={() => handleDelete(application._id)}>Delete</button>
+            <button onClick={() => setEditingApplication(application)}>Edit</button>
           </div>
         );
       })}

@@ -14,3 +14,7 @@ export const deleteApplication = async (id) => {
   const response = await axios.delete(`${API_URL}/${id}`);
   return response.data;
 };
+export const updateApplication = async (id, applicationData) => {
+  const response = await axios.patch(`${API_URL}/${id}`, applicationData);
+  return response.data;
+};
