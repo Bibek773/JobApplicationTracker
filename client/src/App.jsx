@@ -118,6 +118,7 @@ const handleDelete = async (id) => {
                 Applied Date: {new Date(application.appliedDate).toLocaleDateString()}
               </p>
               <hr />
+              <div className="card-actions">
               <button className="btn btn-delete" onClick={() => handleDelete(application._id)}>
                 Delete
               </button>
@@ -127,7 +128,9 @@ const handleDelete = async (id) => {
               <button className="btn btn-view" onClick={() => setSelectedApplication(application)}>
                 View
               </button>
+              </div>
             </div>
+
           );
         })}
   

@@ -57,6 +57,14 @@ applicationRoutes
 .get(async (req, res, next)=> {
     try{
         let result = await Job.findById(req.params.id);
+
+        if(!result){
+            return res.status(404).json({
+                success: false,
+                message: "Application not found"
+            })
+        }
+
         res.status(200).json({
             success: true,
             message: "Success",
@@ -73,6 +81,14 @@ applicationRoutes
 .patch(async (req, res, next)=> {
     try{
         let result = await Job.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+
+        if(!result){
+            return res.status(404).json({
+                success: false,
+                message: "Application not found"
+            })
+        }
+
         res.status(200).json({
             success: true,
             message: "successsss",
@@ -89,6 +105,14 @@ applicationRoutes
 .delete(async (req, res, next)=> {
     try{
         let result = await Job.findByIdAndDelete(req.params.id);
+
+        if(!result){
+            return res.status(404).json({
+                success: false,
+                message: "Application not found"
+            })
+        }
+
         res.status(200).json({
             success: true,
             message: "sucessfully del vayo",
