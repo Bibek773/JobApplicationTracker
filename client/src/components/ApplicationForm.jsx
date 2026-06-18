@@ -70,7 +70,9 @@ const ApplicationForm = ({
         <input
           type="text"
           value={companyName}
-          onChange={(event) => setCompanyName(event.target.value)}
+          onChange={(event) => setCompanyName(event.target.value)} 
+          required  
+          minLength={2  }
         />
 
         <p>You typed: {companyName}</p>
@@ -80,6 +82,7 @@ const ApplicationForm = ({
           type="text"
           value={jobTitle}
           onChange={(event) => setJobTitle(event.target.value)}
+          required
         />
 
         <p>You typed: {jobTitle}</p>
@@ -114,6 +117,7 @@ const ApplicationForm = ({
           type="date"
           value={appliedDate}
           onChange={(event) => setAppliedDate(event.target.value)}
+          required
         />
 
         <p>Selected date: {appliedDate}</p>

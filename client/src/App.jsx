@@ -3,6 +3,8 @@ import { getApplications, deleteApplication } from "./services/applicationServic
 import ApplicationForm from "./components/ApplicationForm";
 
 const App = () => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [search, setSearch] = useState("")
   const [editingApplication, setEditingApplication] = useState(null);
   const [applications, setApplications] = useState([]);
@@ -10,12 +12,16 @@ const App = () => {
   const [selectedApplication, setSelectedApplication] = useState(null);
 useEffect(() => {
   const loadApplications = async () => {
-    try {
-      const data = await getApplications(filterStatus, search);
-      setApplications(data.result || []);
-    } catch (error) {
-      console.error("Failed to load applications:", error);
-    }
+      try {
+          setLoading(true);
+          setError("");
+          const data = await getApplications(filterStatus, search);
+          setApplications(data.result || []);
+        } catch (error) {
+          setError("Failed to load applications");
+        } finally {
+          setLoading(false);
+      }
   };
 
   loadApplications();
@@ -62,7 +68,9 @@ const handleDelete = async (id) => {
 
       <h2>Applications</h2>
       <input type="text" placeholder="Search by company or job title" value={search} onChange={(event) => setSearch(event.target.value)}/>
-      {applications.map((application) => {
+      {error && <p>{error}</p>}
+      {loading && <p>Loading applications...</p>}
+      {!loading && applications.map((application) => {
         return (
           <div key={application._id}>
             <h3>{application.companyName}</h3>
