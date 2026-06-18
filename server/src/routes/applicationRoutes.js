@@ -29,6 +29,13 @@ applicationRoutes
         if(req.query.status){
             filters.status = req.query.status;
         }
+
+        if (req.query.search) {
+            filters.$or = [
+                { companyName: { $regex: req.query.search, $options: "i" } },
+                { jobTitle: { $regex: req.query.search, $options: "i" } }
+            ];
+        }
         
         let result = await Job.find(filters);
         res.status(200).json({
