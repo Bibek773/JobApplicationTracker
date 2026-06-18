@@ -10,3 +10,7 @@ export const createApplication = async (applicationData) => {
   const response = await axios.post(API_URL, applicationData);
   return response.data;
 };
+export const deleteApplication = async (id) => {
+  const response = await axios.delete(`${API_URL}/${id}`);
+  return response.data;
+};
