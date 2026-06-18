@@ -3,6 +3,7 @@ import { getApplications, deleteApplication } from "./services/applicationServic
 import ApplicationForm from "./components/ApplicationForm";
 
 const App = () => {
+  const [search, setSearch] = useState("")
   const [editingApplication, setEditingApplication] = useState(null);
   const [applications, setApplications] = useState([]);
   const [filterStatus, setFilterStatus] = useState("");
@@ -10,7 +11,7 @@ const App = () => {
 useEffect(() => {
   const loadApplications = async () => {
     try {
-      const data = await getApplications(filterStatus);
+      const data = await getApplications(filterStatus, search);
       setApplications(data.result || []);
     } catch (error) {
       console.error("Failed to load applications:", error);
@@ -18,7 +19,7 @@ useEffect(() => {
   };
 
   loadApplications();
-}, [filterStatus]);
+}, [filterStatus, search]);
 const handleDelete = async (id) => {
   const confirmed = window.confirm("Delete this application?");
 
@@ -60,7 +61,7 @@ const handleDelete = async (id) => {
   }}/>
 
       <h2>Applications</h2>
-
+      <input type="text" placeholder="Search by company or job title" value={search} onChange={(event) => setSearch(event.target.value)}/>
       {applications.map((application) => {
         return (
           <div key={application._id}>
