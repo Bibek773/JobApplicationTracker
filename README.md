@@ -2,20 +2,23 @@
 
 A full-stack web application for tracking job and internship applications through different hiring stages.
 
-This project is being developed as part of the InternSathi Full Stack Internship assignment.
+This project was developed as part of the InternSathi Full Stack Internship assignment.
 
 ## Current Status
 
-The backend REST API and MongoDB integration are complete.
+The core backend API and frontend functionality are implemented.
 
-The frontend can currently:
+Users can currently:
 
-* Create a new job application
-* Fetch existing applications from the backend
-* Display applications in a basic UI
-* Clear the form after successful submission
+* Create a job application
+* View all saved applications
+* View full application details
+* Edit an existing application
+* Delete an application with confirmation
+* Filter applications by status
+* Search by company name or job title
 
-Frontend edit, delete, filtering, search, and final UI styling are still in progress.
+The UI is currently functional but still requires final styling and responsiveness improvements.
 
 ## Tech Stack
 
@@ -30,29 +33,46 @@ Frontend edit, delete, filtering, search, and final UI styling are still in prog
 
 ## Completed Features
 
-*  Application Mongoose schema
-*  MongoDB database connection
-*  Create application API
-*  Get all applications API
-*  Get application by ID API
-*  Update application API
-*  Delete application API
-*  API testing using Postman
-*  React application form
-*  Connect frontend with backend using Axios
-*  Store applications in MongoDB
-*  Fetch and display applications in React
-
-## Remaining Features
-
-* Responsive UI styling
-* Application details view
-* Edit application from frontend
-* Delete application with confirmation
+* Mongoose application schema
+* MongoDB database connection
+* Create application API
+* Get all applications API
+* Get application by ID API
+* Update application API
+* Delete application API
 * Filter applications by status
 * Search by company name or job title
-* Basic frontend validation messages
-* Loading and error states
+* API testing using Postman
+* React application form
+* Frontend and backend integration using Axios
+* Display applications in the frontend
+* View application details
+* Edit applications from the frontend
+* Delete applications with confirmation
+* Clear form after successful submission
+
+## Remaining Work
+
+* Improve responsive UI styling
+* Add frontend validation messages
+* Add loading states
+* Add user-friendly API error messages
+* Add automated API tests
+* Add final frontend screenshots
+* Deploy the application
+
+## Application Fields
+
+Each application contains:
+
+* Company name
+* Job title
+* Job type
+* Application status
+* Applied date
+* Notes
+* Created timestamp
+* Updated timestamp
 
 ## API Endpoints
 
@@ -64,17 +84,61 @@ PATCH  /api/applications/:id
 DELETE /api/applications/:id
 ```
 
+### Filter by status
+
+```http
+GET /api/applications?status=Applied
+```
+
+### Search by company name or job title
+
+```http
+GET /api/applications?search=intern
+```
+
+### Combine search and status filter
+
+```http
+GET /api/applications?status=Applied&search=intern
+```
+
 ## Project Structure
 
 ```text
 JobApplicationTracker/
 ├── client/         # React + Vite frontend
-├── server/         # Express REST API
-├── screenshots/    # Project screenshots
+├── server/         # Node.js + Express backend
+├── screenshots/    # API, database and UI screenshots
 ├── package.json
 ├── .gitignore
 ├── LICENSE
 └── README.md
+```
+
+```bash
+git clone https://github.com/Bibek773/JobApplicationTracker.git
+cd JobApplicationTracker
+npm run install:all
+```
+
+## Run the Project
+
+Run frontend and backend together:
+
+```bash
+npm run dev
+```
+
+Frontend:
+
+```text
+http://localhost:5173
+```
+
+Backend:
+
+```text
+http://localhost:5000/api/applications
 ```
 
 ## Screenshots
@@ -107,17 +171,9 @@ JobApplicationTracker/
 
 ![Initial Frontend UI](<screenshots/skeleton_UI_application fetch.png>)
 
-### Application search 
+### Application Search
 
-![application filter](<screenshots/applicationsearch.png>)
-
-## Installation
-
-```bash
-git clone https://github.com/Bibek773/JobApplicationTracker.git
-cd JobApplicationTracker
-npm run install:all
-```
+![Application Search](screenshots/applicationsearch.png)
 
 ## Author
 
@@ -129,4 +185,3 @@ npm run install:all
 ## License
 
 This project is licensed under the [MIT License](./LICENSE).
-g
