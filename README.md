@@ -107,6 +107,10 @@ JobApplicationTracker/
 
 ![Initial Frontend UI](<screenshots/skeleton_UI_application fetch.png>)
 
+### Application search 
+
+![application filter](<screenshots/applicationsearch.png>)
+
 ## Installation
 
 ```bash
@@ -125,3 +129,4 @@ npm run install:all
 ## License
 
 This project is licensed under the [MIT License](./LICENSE).
+g
