@@ -4,62 +4,59 @@ A full-stack web application for tracking job and internship applications throug
 
 This project was developed as part of the InternSathi Full Stack Internship assignment.
 
-## Current Status
+## Project Status
 
-The core backend API and frontend functionality are implemented.
+The core application is complete and functional.
 
-Users can currently:
+Users can:
 
-* Create a job application
+* Create a new job application
 * View all saved applications
-* View full application details
+* View complete application details
 * Edit an existing application
 * Delete an application with confirmation
 * Filter applications by status
 * Search by company name or job title
-
-The UI is currently functional but still requires final styling and responsiveness improvements.
+* See loading, empty, success, and error messages
 
 ## Tech Stack
 
+### Frontend
+
 * React
 * Vite
+* Axios
+* CSS
+
+### Backend
+
 * Node.js
 * Express.js
 * MongoDB
 * Mongoose
-* Axios
+
+### Development Tools
+
 * Postman
+* Git
+* GitHub
 
-## Completed Features
+## Features
 
-* Mongoose application schema
-* MongoDB database connection
-* Create application API
-* Get all applications API
-* Get application by ID API
-* Update application API
-* Delete application API
-* Filter applications by status
-* Search by company name or job title
-* API testing using Postman
-* React application form
-* Frontend and backend integration using Axios
-* Display applications in the frontend
+* Create job applications
+* Display all applications
 * View application details
-* Edit applications from the frontend
+* Edit applications
 * Delete applications with confirmation
-* Clear form after successful submission
-
-## Remaining Work
-
-* Improve responsive UI styling
-* Add frontend validation messages
-* Add loading states
-* Add user-friendly API error messages
-* Add automated API tests
-* Add final frontend screenshots
-* Deploy the application
+* Filter by application status
+* Search by company name or job title
+* Frontend form validation
+* Backend schema validation
+* Loading state
+* Empty-state message
+* Success and error feedback
+* Responsive user interface
+* API error and `404` handling
 
 ## Application Fields
 
@@ -96,7 +93,7 @@ GET /api/applications?status=Applied
 GET /api/applications?search=intern
 ```
 
-### Combine search and status filter
+### Combine status and search
 
 ```http
 GET /api/applications?status=Applied&search=intern
@@ -106,14 +103,24 @@ GET /api/applications?status=Applied&search=intern
 
 ```text
 JobApplicationTracker/
-├── client/         # React + Vite frontend
-├── server/         # Node.js + Express backend
-├── screenshots/    # API, database and UI screenshots
+├── client/         # React and Vite frontend
+├── server/         # Node.js and Express backend
+├── screenshots/    # API screenshots and demo video
 ├── package.json
 ├── .gitignore
 ├── LICENSE
 └── README.md
 ```
+
+## Prerequisites
+
+Install the following before running the project:
+
+* Node.js
+* npm
+* MongoDB
+
+## Installation
 
 ```bash
 git clone https://github.com/Bibek773/JobApplicationTracker.git
@@ -123,7 +130,7 @@ npm run install:all
 
 ## Run the Project
 
-Run frontend and backend together:
+Start the frontend and backend together:
 
 ```bash
 npm run dev
@@ -141,35 +148,35 @@ Backend:
 http://localhost:5000/api/applications
 ```
 
-## Screenshots
+## Demo Video
 
-### Create Application API
+[Watch the Job Application Tracker demo](Jobtracker.mp4)
+
+## API Screenshots
+
+### Create Application
 
 ![Create Application API](screenshots/job_post.png)
 
-### Get All Applications API
+### Get All Applications
 
 ![Get All Applications API](screenshots/job_get.png)
 
-### Get Application by ID API
+### Get Application by ID
 
 ![Get Application by ID API](screenshots/job_getById.png)
 
-### Update Application API
+### Update Application
 
 ![Update Application API](screenshots/job_Patch.png)
 
-### Delete Application API
+### Delete Application
 
 ![Delete Application API](screenshots/job_delete.png)
 
 ### MongoDB Record
 
 ![MongoDB Record](screenshots/mongodb_record.png)
-
-### Initial Frontend UI
-
-![Initial Frontend UI](<screenshots/skeleton_UI_application fetch.png>)
 
 ### Application Search
 
