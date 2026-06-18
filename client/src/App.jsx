@@ -5,6 +5,7 @@ import ApplicationForm from "./components/ApplicationForm";
 const App = () => {
   const [editingApplication, setEditingApplication] = useState(null);
   const [applications, setApplications] = useState([]);
+  const [selectedApplication, setSelectedApplication] = useState(null);
   useEffect(() => {
   const loadApplications = async () => {
     try {
@@ -69,9 +70,26 @@ const handleDelete = async (id) => {
             <hr/>
             <button onClick={() => handleDelete(application._id)}>Delete</button>
             <button onClick={() => setEditingApplication(application)}>Edit</button>
+            <button onClick={() => setSelectedApplication(application)}>View</button>
           </div>
         );
       })}
+      {selectedApplication && (
+        <div>
+          <h2>Application Details</h2>
+          <p>Company: {selectedApplication.companyName}</p>
+          <p>Job Title: {selectedApplication.jobTitle}</p>
+          <p>Job Type: {selectedApplication.jobType}</p>
+          <p>Status: {selectedApplication.status}</p>
+          <p>
+            Applied Date:{" "}
+            {new Date(selectedApplication.appliedDate).toLocaleDateString()}
+          </p>
+          <p>Notes: {selectedApplication.notes}</p>
+
+          <button onClick={() => setSelectedApplication(null)}>Close</button>
+        </div>
+      )}
     </div>
   );
 };
