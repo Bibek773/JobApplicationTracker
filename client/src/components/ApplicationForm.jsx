@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createApplication } from "../services/applicationService";
-const ApplicationForm = () => {
+const ApplicationForm = ({onApplicationCreated}) => {
+
   const [companyName, setCompanyName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [jobType, setJobType] = useState("Internship");
@@ -22,6 +23,14 @@ const ApplicationForm = () => {
   try {
     const response = await createApplication(applicationData);
     console.log(response);
+
+      setCompanyName("");
+      setJobTitle("");
+      setJobType("Internship");
+      setStatus("Applied");
+      setAppliedDate("");
+      setNotes("");
+      onApplicationCreated(response.result);
   } catch (error) {
     console.error("Error creating application:", error);
   }
