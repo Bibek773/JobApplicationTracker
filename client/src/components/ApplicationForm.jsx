@@ -15,6 +15,7 @@ const ApplicationForm = ({
   const [status, setStatus] = useState("Applied");
   const [appliedDate, setAppliedDate] = useState("");
   const [notes, setNotes] = useState("");
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     if (editingApplication) {
@@ -24,11 +25,13 @@ const ApplicationForm = ({
       setStatus(editingApplication.status);
       setAppliedDate(editingApplication.appliedDate.split("T")[0]);
       setNotes(editingApplication.notes || "");
+      setMessage("");
     }
   }, [editingApplication]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setMessage("");
 
     const applicationData = {
       companyName,
@@ -47,9 +50,12 @@ const ApplicationForm = ({
         );
 
         onApplicationUpdated(response.result);
+        setMessage("Application updated successfully");
       } else {
         const response = await createApplication(applicationData);
+
         onApplicationCreated(response.result);
+        setMessage("Application created successfully");
       }
 
       setCompanyName("");
@@ -60,19 +66,20 @@ const ApplicationForm = ({
       setNotes("");
     } catch (error) {
       console.error("Error saving application:", error);
+      setMessage("Failed to save application");
     }
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="application-form" onSubmit={handleSubmit}>
         <label>Company Name</label>
         <input
           type="text"
           value={companyName}
-          onChange={(event) => setCompanyName(event.target.value)} 
-          required  
-          minLength={2  }
+          onChange={(event) => setCompanyName(event.target.value)}
+          required
+          minLength={2}
         />
 
         <p>You typed: {companyName}</p>
@@ -130,6 +137,8 @@ const ApplicationForm = ({
         />
 
         <p>Notes: {notes}</p>
+
+        {message && <p>{message}</p>}
 
         <button type="submit">
           {editingApplication ? "Update Application" : "Add Application"}

@@ -1,0 +1,123 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+}
+
+.app-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+.application-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.application-form label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.application-form input,
+.application-form select,
+.application-form textarea {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.application-form button {
+  margin-top: 15px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+.application-card {
+  background-color: white;
+  padding: 16px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.application-card h3 {
+  margin-top: 0;
+}
+
+.application-card button {
+  margin-right: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filter-bar input,
+.filter-bar select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.filter-bar input {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .filter-bar {
+    flex-direction: column;
+  }
+}
+.btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.btn-view {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-edit {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.btn-delete {
+  background-color: #dc2626;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+.details-card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.details-card h2 {
+  margin-top: 0;
+}
+
+.btn-close {
+  background-color: #6b7280;
+  color: white;
+}
