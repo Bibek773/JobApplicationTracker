@@ -24,7 +24,13 @@ applicationRoutes
 })
 .get(async (req, res, next)=> {
     try{
-        let result = await Job.find({});
+        let filters = {};
+
+        if(req.query.status){
+            filters.status = req.query.status;
+        }
+        
+        let result = await Job.find(filters);
         res.status(200).json({
             success: true,
             message: "Retrived",

@@ -5,11 +5,12 @@ import ApplicationForm from "./components/ApplicationForm";
 const App = () => {
   const [editingApplication, setEditingApplication] = useState(null);
   const [applications, setApplications] = useState([]);
+  const [filterStatus, setFilterStatus] = useState("");
   const [selectedApplication, setSelectedApplication] = useState(null);
-  useEffect(() => {
+useEffect(() => {
   const loadApplications = async () => {
     try {
-      const data = await getApplications();
+      const data = await getApplications(filterStatus);
       setApplications(data.result || []);
     } catch (error) {
       console.error("Failed to load applications:", error);
@@ -17,7 +18,7 @@ const App = () => {
   };
 
   loadApplications();
-}, []);
+}, [filterStatus]);
 const handleDelete = async (id) => {
   const confirmed = window.confirm("Delete this application?");
 
@@ -90,6 +91,15 @@ const handleDelete = async (id) => {
           <button onClick={() => setSelectedApplication(null)}>Close</button>
         </div>
       )}
+      <label>Filter by Status</label>
+
+        <select value={filterStatus} onChange={(event) => setFilterStatus(event.target.value)}>
+          <option value="">All</option>
+          <option value="Applied">Applied</option>
+          <option value="Interviewing">Interviewing</option>
+          <option value="Offer">Offer</option>
+          <option value="Rejected">Rejected</option>
+        </select>
     </div>
   );
 };
