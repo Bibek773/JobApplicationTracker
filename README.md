@@ -150,7 +150,7 @@ http://localhost:5000/api/applications
 
 ## Demo Video
 
-[Watch the Job Application Tracker demo](Jobtracker.mp4)
+[Watch the Job Application Tracker demo](screenshots/Jobtracker.mp4)
 
 ## API Screenshots
 
